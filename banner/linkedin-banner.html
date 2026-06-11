@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>l’1rie — LinkedIn banner (typewriter ed.)</title>
+  <title>1’rie — LinkedIn banner (typewriter ed.)</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
@@ -66,7 +66,8 @@
       display: flex;
       align-items: center;
       gap: 70px;
-      padding: 0 90px 0 80px;
+      /* left padding clears the LinkedIn profile photo (bottom-left overlap) */
+      padding: 0 90px 30px 380px;
       color: var(--blue);
     }
 
@@ -139,9 +140,9 @@
   <div class="banner" id="banner">
     <div class="paper">
       <div class="left">
-        <p class="t small jitter">somewhere between paris &amp; your pocket —</p>
-        <p class="t lead jitter">dear world, we are l’<span class="strike">imprimerie</span>.</p>
-        <h1 class="t big jitter">l’1rie<span class="reg">®</span><span class="cursor" data-keep></span></h1>
+        <p class="t small jitter">somewhere between biarritz &amp; your pocket —</p>
+        <p class="t lead jitter">dear world, we are <span class="strike">l’imprimerie</span>.</p>
+        <h1 class="t big jitter">1’rie<span class="reg">®</span><span class="cursor" data-keep></span></h1>
       </div>
       <div class="right">
         <p class="t tagline jitter">an AI-native mobile app studio.<br />we design, print &amp; ship<br />subscription apps — worldwide.</p>
@@ -203,7 +204,7 @@
       canvas.toBlob((blob) => {
         const a = document.createElement("a");
         a.href = URL.createObjectURL(blob);
-        a.download = "l1rie-linkedin-banner.png";
+        a.download = "1rie-linkedin-banner.png";
         a.click();
         URL.revokeObjectURL(a.href);
       }, "image/png");

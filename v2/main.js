@@ -1,5 +1,5 @@
 /* ============================================================
-   l’1rie — typewriter edition
+   1’rie — typewriter edition
    scroll = the typing head. every character is one unit of
    scroll; scrolling back un-types. vanilla JS, no libraries.
    ============================================================ */

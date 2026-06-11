@@ -1,5 +1,5 @@
 /* ============================================================
-   l’1rie — animations
+   1’rie — animations
    gsap + ScrollTrigger + lenis (all loaded from CDN)
    ============================================================ */
 

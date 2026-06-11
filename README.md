@@ -1,11 +1,11 @@
-# l’1rie — landing page
+# 1’rie — landing page
 
-One-page animated landing for l’Imprimerie (l’1rie), an AI-native mobile app studio.
+One-page animated landing for l’Imprimerie (1’rie), an AI-native mobile app studio.
 
 ## Two editions
 
 - **`/` (classic)** — the animated one-pager: GSAP ScrollTrigger + Lenis, pinned horizontal work showcase, CSS printer animations.
-- **`/v2/` (typewriter)** — "a letter to the world": scroll drives a typewriter that types the letter character by character (scrolling up un-types it). The wordmark gets typed as "l'imprimerie", struck out, and retyped as l'1rie; app icons get stamped onto the paper. Vanilla JS, no libraries. The two editions link to each other.
+- **`/v2/` (typewriter)** — "a letter to the world": scroll drives a typewriter that types the letter character by character (scrolling up un-types it). The wordmark gets typed as "l'imprimerie", struck out, and retyped as 1'rie; app icons get stamped onto the paper. Vanilla JS, no libraries. The two editions link to each other.
 
 ## Stack
 
