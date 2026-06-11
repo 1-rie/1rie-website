@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>l’1rie — LinkedIn banner (typewriter ed.)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --blue: #0032ff;
+      --paper: #fdfdfa;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: "Space Mono", ui-monospace, monospace;
+      background: #dfe5ff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.2rem;
+      padding: 2rem 1rem;
+    }
+
+    /* toolbar — not part of the capture */
+    .toolbar {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      font-size: 0.8rem;
+      color: var(--blue);
+    }
+    .toolbar button {
+      font: inherit;
+      font-weight: 700;
+      color: #fff;
+      background: var(--blue);
+      border: none;
+      border-radius: 999px;
+      padding: 0.7em 1.6em;
+      cursor: pointer;
+    }
+    .toolbar button:hover { opacity: 0.9; }
+
+    /* ---------- the banner : 1584 × 396 (LinkedIn profile cover) ---------- */
+
+    .banner {
+      width: 1584px;
+      height: 396px;
+      background: var(--blue);
+      position: relative;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    .paper {
+      position: absolute;
+      inset: 20px 24px;
+      background: var(--paper);
+      background-image: linear-gradient(rgba(0, 50, 255, 0.05) 1px, transparent 1px);
+      background-size: 100% 2em;
+      border-radius: 4px;
+      box-shadow: 0 18px 50px rgba(0, 10, 80, 0.45);
+      transform: rotate(-0.4deg);
+      display: flex;
+      align-items: center;
+      gap: 70px;
+      padding: 0 90px 0 80px;
+      color: var(--blue);
+    }
+
+    .t { line-height: 1.9; }
+    .small { font-size: 15px; opacity: 0.75; }
+    .lead { font-size: 21px; margin-top: 4px; }
+    .strike .char { text-decoration: line-through; text-decoration-thickness: 3px; }
+    .big {
+      font-size: 124px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+      white-space: nowrap;
+    }
+    .big .reg { font-size: 0.32em; vertical-align: super; }
+    .cursor {
+      display: inline-block;
+      width: 0.5em;
+      height: 1.02em;
+      background: var(--blue);
+      vertical-align: -0.12em;
+      margin-left: 0.08em;
+    }
+
+    .left { flex-shrink: 0; padding-bottom: 14px; }
+
+    .right {
+      margin-left: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+      align-items: flex-start;
+      padding-bottom: 6px;
+    }
+    .tagline { font-size: 19px; line-height: 1.8; }
+    .stamps { display: flex; }
+    .stamps img {
+      width: 62px;
+      height: 62px;
+      border-radius: 23%;
+      box-shadow: 0 5px 14px rgba(0, 10, 80, 0.3);
+      margin-right: -10px;
+      background: #fff;
+    }
+    .stamps img.glyph { padding: 7px; }
+    .stamps img:nth-child(odd) { transform: rotate(-4deg); }
+    .stamps img:nth-child(even) { transform: rotate(3deg) translateY(4px); }
+
+    .footline {
+      position: absolute;
+      right: 36px;
+      bottom: 14px;
+      font-size: 13px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      opacity: 0.6;
+    }
+
+    .char { display: inline-block; white-space: pre; }
+    .word { display: inline-block; white-space: nowrap; }
+  </style>
+</head>
+<body>
+
+  <div class="toolbar">
+    <button id="dl">télécharger en PNG (2×)</button>
+    <span>1584 × 396 — couverture de profil LinkedIn</span>
+  </div>
+
+  <div class="banner" id="banner">
+    <div class="paper">
+      <div class="left">
+        <p class="t small jitter">somewhere between paris &amp; your pocket —</p>
+        <p class="t lead jitter">dear world, we are l’<span class="strike">imprimerie</span>.</p>
+        <h1 class="t big jitter">l’1rie<span class="reg">®</span><span class="cursor" data-keep></span></h1>
+      </div>
+      <div class="right">
+        <p class="t tagline jitter">an AI-native mobile app studio.<br />we design, print &amp; ship<br />subscription apps — worldwide.</p>
+        <div class="stamps">
+          <img src="../assets/icon-pgt.png" alt="PGT" />
+          <img src="../assets/icon-sundaycup.png" alt="SundayCup" />
+          <img src="../assets/icon-unsweet.png" alt="Unsweet" />
+          <img src="../assets/icon-ldp.png" alt="Low Dopamine Path" />
+          <img src="../assets/icon-kithe.svg" alt="Kithe" class="glyph" />
+          <img src="../assets/icon-lutai.png" alt="LutAI" />
+        </div>
+      </div>
+      <p class="footline t jitter">— printing house for the app age —</p>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+  <script>
+    /* typewriter ink: split text into chars with slight rotation/opacity jitter */
+    function jitter(node, struck) {
+      [...node.childNodes].forEach((child) => {
+        if (child.nodeType === Node.TEXT_NODE) {
+          const frag = document.createDocumentFragment();
+          let word = null;
+          [...child.textContent].forEach((ch) => {
+            const span = document.createElement("span");
+            span.className = "char" + (struck ? " struck" : "");
+            span.textContent = ch;
+            if (ch === " ") {
+              frag.appendChild(span);
+              word = null;
+            } else {
+              span.style.transform = `rotate(${((Math.random() * 2 - 1) * 1.4).toFixed(2)}deg)`;
+              span.style.opacity = (0.84 + Math.random() * 0.16).toFixed(2);
+              if (!word) {
+                word = document.createElement("span");
+                word.className = "word" + (struck ? " strike" : "");
+                frag.appendChild(word);
+              }
+              word.appendChild(span);
+            }
+          });
+          child.replaceWith(frag);
+        } else if (child.nodeType === Node.ELEMENT_NODE && !child.hasAttribute("data-keep") && child.tagName !== "BR") {
+          jitter(child, struck || child.classList.contains("strike"));
+        }
+      });
+    }
+    document.querySelectorAll(".jitter").forEach((el) => jitter(el, false));
+
+    /* download as PNG (2x) */
+    document.getElementById("dl").addEventListener("click", async () => {
+      await document.fonts.ready;
+      const canvas = await html2canvas(document.getElementById("banner"), {
+        scale: 2,
+        useCORS: true,
+        backgroundColor: null,
+      });
+      canvas.toBlob((blob) => {
+        const a = document.createElement("a");
+        a.href = URL.createObjectURL(blob);
+        a.download = "l1rie-linkedin-banner.png";
+        a.click();
+        URL.revokeObjectURL(a.href);
+      }, "image/png");
+    });
+  </script>
+</body>
+</html>
