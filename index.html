@@ -3,301 +3,59 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>1’rie — an AI-native app studio</title>
-  <meta name="description" content="l’Imprimerie (1’rie) is an AI-native mobile app studio. We design, print & ship subscription apps for the whole world." />
-  <meta property="og:title" content="1’rie — an AI-native app studio" />
-  <meta property="og:description" content="A printing house for the app age. We design, print & ship subscription apps, worldwide." />
-  <meta property="og:type" content="website" />
+  <title>1’rie — typewriter edition</title>
+  <meta name="description" content="A letter to the world, typed as you scroll. l’Imprimerie (1’rie) is an AI-native mobile app studio." />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230032FF'/%3E%3Ctext x='32' y='46' font-family='Arial Black, sans-serif' font-size='40' font-weight='900' fill='white' text-anchor='middle'%3E1%3C/text%3E%3C/svg%3E" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
 
-  <!-- texture + chrome -->
-  <div class="noise" aria-hidden="true"></div>
-  <div class="cursor" aria-hidden="true"></div>
-  <div class="cursor-ring" aria-hidden="true"></div>
-  <div class="progress" aria-hidden="true"></div>
-
-  <!-- preloader : l’imprimerie gets pressed into 1’rie -->
-  <div class="preloader" aria-hidden="true">
-    <div class="pre-wordmark">
-      <span class="pre-collapse">im</span><span class="pre-one">1</span><span class="pre-collapse">prime</span><span class="pre-one">’</span><span class="pre-bit">rie</span>
+  <!-- fixed HUD -->
+  <header class="hud">
+    <div class="hud-left">
+      <span class="hud-brand">1’rie<sup>®</sup></span>
     </div>
-    <p class="pre-caption mono">printing house — for the app age</p>
-  </div>
-
-  <!-- nav -->
-  <header class="nav">
-    <a href="#top" class="nav-brand" data-hover>1’rie<sup>®</sup></a>
-    <nav class="nav-links mono">
-      <a href="#work" data-hover>Work</a>
-      <a href="#services" data-hover>Services</a>
-      <a href="#contact" data-hover>Contact</a>
-      <button class="sound-toggle" data-hover aria-pressed="false">sound: off</button>
-    </nav>
+    <button class="sound-toggle" aria-pressed="false">sound: off</button>
   </header>
 
-  <main>
+  <div class="scroll-hint">scroll to type ↓</div>
+  <div class="progress-line" aria-hidden="true"><i></i></div>
 
-    <!-- hero -->
-    <section class="hero" id="top">
-      <div class="hero-grid" aria-hidden="true"></div>
-      <div class="hero-blob" aria-hidden="true"></div>
-      <span class="hero-glyph g1" aria-hidden="true">✺</span>
-      <span class="hero-glyph g2" aria-hidden="true">✦</span>
-      <span class="hero-glyph g3" aria-hidden="true">✦</span>
-      <div class="printer printer--mini" aria-hidden="true">
-        <div class="ink-drops"><i></i><i></i><i></i></div>
-        <div class="printer-body">
-          <span class="printer-light"></span>
-          <span class="printer-slot"></span>
-        </div>
-        <div class="printer-out">
-          <div class="printer-sheet">
-            <span class="ui-line w70"></span>
-            <span class="ui-line w50"></span>
-            <span class="sheet-pill"></span>
-          </div>
-        </div>
-      </div>
-      <div class="hero-inner">
-        <p class="hero-eyebrow mono">1’rie <span class="dim">/ the ’ reads “prime” : un·prime·rie /</span> — l’imprimerie, a printing house for the app age</p>
-        <h1 class="hero-title"><span class="split">1’rie</span><sup class="reg">®</sup></h1>
-        <p class="hero-sub">An AI-native mobile app studio. We design, print &amp; ship subscription apps — for everyone, everywhere.</p>
-      </div>
-      <div class="hero-foot mono">
-        <span class="hero-scroll">scroll <span class="arrow">↓</span></span>
-        <span>biarritz → worldwide</span>
-      </div>
-    </section>
-
-    <!-- manifesto : words fill with ink on scroll -->
-    <section class="manifesto">
-      <p class="manifesto-text" data-fill>Most studios make one app. We run the presses — a portfolio of small, sharp, beautiful apps. Designed by humans. Accelerated by AI. Printed for the whole world.</p>
-    </section>
-
-    <!-- work : pinned horizontal scroll -->
-    <section class="work" id="work">
-      <div class="work-head">
-        <h2 class="section-title"><span class="split">Selected work</span></h2>
-        <span class="mono dim">( keep scrolling ↴ )</span>
-      </div>
-
-      <div class="work-track">
-
-        <article class="panel">
-          <span class="panel-index mono">01</span>
-          <div class="phone" data-parallax>
-            <div class="phone-screen screen-teech">
-              <div class="teech-target"></div>
-              <div class="teech-line"></div>
-              <div class="teech-dot"></div>
-              <div class="ui-pill"></div>
-            </div>
-          </div>
-          <div class="panel-info">
-            <img class="panel-icon" src="assets/icon-teech.png" alt="" width="76" height="76" loading="lazy" />
-            <h3 class="panel-name"><a href="https://apps.apple.com/fr/app/teech-golf-gps-performance/id6499589827" target="_blank" rel="noopener" data-hover>Teech Golf</a></h3>
-            <p class="panel-tag">GPS &amp; performance — analyse your game, lower your score.</p>
-            <ul class="panel-chips mono"><li>iOS</li><li>Golf</li><li>On the App Store</li></ul>
-          </div>
-        </article>
-
-        <article class="panel">
-          <span class="panel-index mono">02</span>
-          <div class="phone" data-parallax>
-            <div class="phone-screen screen-forme">
-              <div class="forme-ring"></div>
-              <div class="forme-bars"><i style="--h:40%"></i><i style="--h:70%"></i><i style="--h:55%"></i><i style="--h:90%"></i><i style="--h:65%"></i></div>
-              <div class="ui-pill"></div>
-            </div>
-          </div>
-          <div class="panel-info">
-            <img class="panel-icon" src="assets/icon-pgt.png" alt="" width="76" height="76" loading="lazy" />
-            <h3 class="panel-name">PGT</h3>
-            <p class="panel-tag">A Tour coach’s method, gamified. Real drills, real metrics, real progress.</p>
-            <ul class="panel-chips mono"><li>iOS</li><li>Golf</li><li>Subscription</li></ul>
-          </div>
-        </article>
-
-        <article class="panel">
-          <span class="panel-index mono">03</span>
-          <div class="phone" data-parallax>
-            <div class="phone-screen screen-sunday">
-              <div class="lb-row lead"><i class="lb-dot"></i><span class="lb-bar w70"></span></div>
-              <div class="lb-row"><i class="lb-dot"></i><span class="lb-bar w60"></span></div>
-              <div class="lb-row"><i class="lb-dot"></i><span class="lb-bar w50"></span></div>
-              <div class="lb-row"><i class="lb-dot"></i><span class="lb-bar w60"></span></div>
-              <div class="ui-pill"></div>
-            </div>
-          </div>
-          <div class="panel-info">
-            <img class="panel-icon" src="assets/icon-sundaycup.png" alt="" width="76" height="76" loading="lazy" />
-            <h3 class="panel-name">SundayCup</h3>
-            <p class="panel-tag">Ryder Cups between friends — live leaderboard, one WhatsApp link to join.</p>
-            <ul class="panel-chips mono"><li>iOS</li><li>Golf</li><li>Live events</li></ul>
-          </div>
-        </article>
-
-        <article class="panel">
-          <span class="panel-index mono">04</span>
-          <div class="phone" data-parallax>
-            <div class="phone-screen screen-aura">
-              <div class="aura-orb"></div>
-              <div class="aura-bars"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-              <div class="ui-pill"></div>
-            </div>
-          </div>
-          <div class="panel-info">
-            <img class="panel-icon" src="assets/icon-unsweet.png" alt="" width="76" height="76" loading="lazy" />
-            <h3 class="panel-name">Unsweet</h3>
-            <p class="panel-tag">Break up with sugar. A daily coach with a character, not a spreadsheet.</p>
-            <ul class="panel-chips mono"><li>iOS</li><li>Health</li><li>Subscription</li></ul>
-          </div>
-        </article>
-
-        <article class="panel">
-          <span class="panel-index mono">05</span>
-          <div class="phone" data-parallax>
-            <div class="phone-screen screen-ldp">
-              <div class="ldp-path">
-                <i class="ldp-step done"></i>
-                <i class="ldp-step done"></i>
-                <i class="ldp-step current"></i>
-                <i class="ldp-step"></i>
-              </div>
-              <div class="ui-pill"></div>
-            </div>
-          </div>
-          <div class="panel-info">
-            <img class="panel-icon" src="assets/icon-ldp.png" alt="" width="76" height="76" loading="lazy" />
-            <h3 class="panel-name panel-name--sm">Low Dopamine Path</h3>
-            <p class="panel-tag">Rewire your days, quest by quest.</p>
-            <ul class="panel-chips mono"><li>iOS</li><li>Wellbeing</li><li>Subscription</li></ul>
-          </div>
-        </article>
-
-        <article class="panel">
-          <span class="panel-index mono">06</span>
-          <div class="phone" data-parallax>
-            <div class="phone-screen screen-kithe">
-              <div class="kithe-masthead"></div>
-              <div class="ui-line w90"></div>
-              <div class="ui-line w70"></div>
-              <div class="ui-line w80"></div>
-              <div class="ui-line w50"></div>
-              <div class="caret"></div>
-              <div class="ui-pill"></div>
-            </div>
-          </div>
-          <div class="panel-info">
-            <img class="panel-icon panel-icon--glyph" src="assets/icon-kithe.svg" alt="" width="76" height="76" loading="lazy" />
-            <h3 class="panel-name">Kithe</h3>
-            <p class="panel-tag">Family memories, printed weekly — every story becomes a front page.</p>
-            <ul class="panel-chips mono"><li>iOS</li><li>Family</li><li>On the press</li></ul>
-          </div>
-        </article>
-
-        <article class="panel">
-          <span class="panel-index mono">07</span>
-          <div class="phone" data-parallax>
-            <div class="phone-screen screen-lutai">
-              <div class="lutai-ring"><i class="lutai-orbit"></i></div>
-              <div class="ui-line w60"></div>
-              <div class="ui-line w50"></div>
-              <div class="ui-pill"></div>
-            </div>
-          </div>
-          <div class="panel-info">
-            <img class="panel-icon" src="assets/icon-lutai.png" alt="" width="76" height="76" loading="lazy" />
-            <h3 class="panel-name">LutAI</h3>
-            <p class="panel-tag">Cycle-synced nutrition for active women — eat for the phase you’re in.</p>
-            <ul class="panel-chips mono"><li>iOS</li><li>Health</li><li>On the press</li></ul>
-          </div>
-        </article>
-
-        <article class="panel panel-next">
-          <a href="#contact" class="next-inner" data-hover>
-            <span class="next-big">Yours,<br/>next<span class="blink">_</span></span>
-            <span class="mono">→ say bonjour</span>
-          </a>
-        </article>
-
-      </div>
-    </section>
-
-    <!-- services : we also build apps for clients -->
-    <section class="presta" id="services">
-      <div class="presta-inner">
-        <div class="presta-copy" data-reveal>
-          <p class="presta-eyebrow mono">// also available as a service</p>
-          <h2 class="section-title"><span class="split">Your app, our presses.</span></h2>
-          <p class="presta-text">We open the printing house to founders and brands. Strategy, design, code, App&nbsp;Store — your app, built end to end at AI speed, with studio-grade taste.</p>
-          <div class="presta-terminal mono" aria-hidden="true">&gt;&nbsp;printing your_app.ipa&nbsp;<span class="blink">▌</span></div>
-          <a class="presta-cta mono" href="#contact" data-hover>Start a project →</a>
-        </div>
-        <div class="presta-visual" data-reveal aria-hidden="true">
-          <div class="printer">
-            <div class="ink-drops"><i></i><i></i><i></i></div>
-            <div class="printer-body">
-              <span class="printer-light"></span>
-              <span class="printer-slot"></span>
-            </div>
-            <div class="printer-out">
-              <div class="printer-sheet">
-                <span class="ui-line w70"></span>
-                <span class="ui-line w50"></span>
-                <span class="ui-line w60"></span>
-                <span class="sheet-pill"></span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- marquee -->
-    <div class="marquee" aria-hidden="true">
-      <div class="marquee-row">
-        <div class="marquee-inner">
-          <span>ai-native ✺ mobile ✺ b2c ✺ worldwide ✺ subscription ✺ quality ✺&nbsp;</span>
-          <span>ai-native ✺ mobile ✺ b2c ✺ worldwide ✺ subscription ✺ quality ✺&nbsp;</span>
-        </div>
-      </div>
-      <div class="marquee-row reverse">
-        <div class="marquee-inner">
-          <span>l’imprimerie ✺ 1’rie ✺ printing house ✺ for the app age ✺&nbsp;</span>
-          <span>l’imprimerie ✺ 1’rie ✺ printing house ✺ for the app age ✺&nbsp;</span>
-        </div>
-      </div>
+  <!-- the sheet of paper. every .t block gets typed character by character on scroll. -->
+  <div class="stage">
+    <div class="paper">
+      <p class="t small">somewhere between biarritz &amp; your pocket — june 2026</p>
+      <p class="t">dear world,</p>
+      <p class="t">we are <span class="strikeable">l’imprimerie</span>.</p>
+      <p class="t small">(too long — let’s say:)</p>
+      <h1 class="t big">1’rie<span class="reg">®</span></h1>
+      <p class="t">an AI-native mobile app studio. we design, print &amp; ship subscription apps — for everyone, everywhere.</p>
+      <p class="t">most studios make one app. we run the presses.</p>
+      <p class="t head">— what’s coming off the press —</p>
+      <p class="t app"><span class="idx">01</span> <img class="t-stamp" src="assets/icon-teech.png" alt="Teech Golf app icon" width="48" height="48" /> <b><a href="https://apps.apple.com/fr/app/teech-golf-gps-performance/id6499589827" target="_blank" rel="noopener">Teech Golf</a></b> — gps &amp; performance, live on the app store.</p>
+      <p class="t app"><span class="idx">02</span> <img class="t-stamp" src="assets/icon-pgt.png" alt="PGT app icon" width="48" height="48" /> <b>PGT</b> — a tour coach’s method, gamified.</p>
+      <p class="t app"><span class="idx">03</span> <img class="t-stamp" src="assets/icon-sundaycup.png" alt="SundayCup app icon" width="48" height="48" /> <b>SundayCup</b> — ryder cups between friends.</p>
+      <p class="t app"><span class="idx">04</span> <img class="t-stamp" src="assets/icon-unsweet.png" alt="Unsweet app icon" width="48" height="48" /> <b>Unsweet</b> — break up with sugar.</p>
+      <p class="t app"><span class="idx">05</span> <img class="t-stamp" src="assets/icon-ldp.png" alt="Low Dopamine Path app icon" width="48" height="48" /> <b>Low Dopamine Path</b> — rewire your days, quest by quest.</p>
+      <p class="t app"><span class="idx">06</span> <img class="t-stamp t-stamp--glyph" src="assets/icon-kithe.svg" alt="Kithe app icon" width="48" height="48" /> <b>Kithe</b> — family memories, printed weekly.</p>
+      <p class="t app"><span class="idx">07</span> <img class="t-stamp" src="assets/icon-lutai.png" alt="LutAI app icon" width="48" height="48" /> <b>LutAI</b> — cycle-synced nutrition for active women.</p>
+      <p class="t head">— p.s. —</p>
+      <p class="t">we also print for others. your app, our presses: strategy, design, code, app store — end to end, at AI speed.</p>
+      <!-- PLACEHOLDER EMAIL — same as v1 -->
+      <p class="t">say bonjour: <a href="mailto:bonjour@limprimerie.studio">bonjour@limprimerie.studio</a></p>
+      <p class="t">yours, freshly inked,</p>
+      <p class="t sig">— 1’rie</p>
+      <p class="t small">(typed with AI, pressed by hand.)</p>
+      <span class="type-cursor" aria-hidden="true"></span>
     </div>
+  </div>
 
-    <!-- contact -->
-    <footer class="contact" id="contact">
-      <p class="contact-eyebrow mono">got an idea? a phone? same.</p>
-      <h2 class="contact-title"><span class="split">Say bonjour.</span></h2>
-      <!-- PLACEHOLDER EMAIL — replace with your real address -->
-      <a class="contact-mail" href="mailto:bonjour@limprimerie.studio" data-hover data-magnetic>bonjour@limprimerie.studio</a>
-      <div class="contact-foot mono">
-        <span>© 2026 l’imprimerie — biarritz, france</span>
-        <span class="contact-socials">
-          <!-- PLACEHOLDER SOCIALS -->
-          <a href="#" data-hover>x</a> / <a href="#" data-hover>instagram</a> / <a href="#" data-hover>linkedin</a>
-        </span>
-        <a href="v2/" data-hover>typewriter edition ↗</a>
-        <span>printed with AI, pressed by hand</span>
-      </div>
-    </footer>
+  <!-- gives the page its scroll length; height set by JS -->
+  <div class="scroll-space" aria-hidden="true"></div>
 
-  </main>
-
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
   <script src="main.js"></script>
 </body>
 </html>
