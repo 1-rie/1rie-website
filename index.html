@@ -56,6 +56,15 @@
   <!-- gives the page its scroll length; height set by JS -->
   <div class="scroll-space" aria-hidden="true"></div>
 
+  <!-- press run — a hidden mini game past the end of the letter -->
+  <section class="press-run" id="press-run" aria-hidden="true">
+    <p class="press-run-title">— intermission —<br />the money press</p>
+    <canvas id="game-canvas" aria-label="the money press: a tiny runner game. jump the pen nibs, eat the ink, print the dollars."></canvas>
+    <p class="press-run-sub">jump the nibs · eat the ink · print the dollars</p>
+    <p class="press-run-exit">scroll up to return to the letter ↑</p>
+  </section>
+
   <script src="main.js"></script>
+  <script src="game.js"></script>
 </body>
 </html>

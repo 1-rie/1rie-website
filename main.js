@@ -79,7 +79,8 @@ function init() {
 
   const PX = window.innerWidth < 760 ? 5 : 7; // scroll pixels per keystroke
   const space = document.querySelector(".scroll-space");
-  space.style.height = units.length * PX + window.innerHeight * 1.3 + "px";
+  // extra viewport past the letter hides the mini game (see game.js)
+  space.style.height = units.length * PX + window.innerHeight * 2.4 + "px";
 
   /* ---------- sound (WebAudio, off until toggled) ---------- */
 
@@ -203,9 +204,15 @@ function init() {
     paperY += (targetY - paperY) * 0.12;
     paper.style.transform = `translateY(${-paperY}px)`;
 
+    /* past the end of the letter, the money press takes over */
+    const gameLive = window.scrollY > units.length * PX + window.innerHeight * 0.55;
+    if (window.PressRun) window.PressRun.setLive(gameLive);
+
     /* hud */
     progress.style.transform = `scaleX(${shown / units.length})`;
-    hint.classList.toggle("gone", shown > 12);
+    const hintText = shown >= units.length ? "keep scrolling ↓" : "scroll to type ↓";
+    if (hint.textContent !== hintText) hint.textContent = hintText;
+    hint.classList.toggle("gone", gameLive || (shown > 12 && shown < units.length));
 
     requestAnimationFrame(frame);
   }

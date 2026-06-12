@@ -193,6 +193,64 @@ body.typing .t-stamp.on {
 body.typing .type-cursor { display: block; }
 @keyframes blink { 0%, 60% { opacity: 1; } 61%, 100% { opacity: 0; } }
 
+/* ---------- press run : the mini game past the end of the letter ---------- */
+
+.press-run {
+  position: fixed;
+  inset: 0;
+  background: var(--blue);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.1rem;
+  z-index: 9;
+  color: var(--white);
+  text-align: center;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.45s ease, visibility 0.45s;
+  touch-action: manipulation;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+.press-run.live {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+.press-run-title {
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 700;
+  line-height: 1.9;
+  opacity: 0.9;
+}
+#game-canvas {
+  display: block;
+  width: min(92vw, 860px);
+  height: clamp(220px, 44vh, 400px);
+}
+.press-run-sub {
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  opacity: 0.65;
+}
+.press-run-exit {
+  position: absolute;
+  bottom: calc(1.1rem + env(safe-area-inset-bottom, 0px));
+  left: 0;
+  right: 0;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  opacity: 0.55;
+}
+
 /* ---------- reduced motion / no-JS : the letter reads as a plain page ---------- */
 
 @media (prefers-reduced-motion: reduce) {
