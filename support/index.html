@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>1’rie — Support</title>
+  <meta name="description" content="Contact support for the mobile applications published by Teech Golf SAS under the 1’rie name." />
+  <meta name="robots" content="index, follow" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230032FF'/%3E%3Ctext x='32' y='46' font-family='Arial Black, sans-serif' font-size='40' font-weight='900' fill='white' text-anchor='middle'%3E1%3C/text%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/app/legal.css" />
+  <style>
+    /* form-specific styling — sits on top of legal.css */
+    .support-form { margin-top: 1.8em; display: grid; gap: 1.1em; }
+
+    .field { display: grid; gap: 0.4em; }
+
+    label {
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+    }
+
+    label .req { color: var(--blue); }
+
+    input, select, textarea {
+      font-family: var(--mono);
+      font-size: 0.95rem;
+      color: var(--ink);
+      background: #fff;
+      border: 1.5px solid rgba(10, 17, 48, 0.2);
+      border-radius: 8px;
+      padding: 12px 14px;
+      width: 100%;
+    }
+
+    textarea { resize: vertical; min-height: 150px; line-height: 1.6; }
+
+    input:focus, select:focus, textarea:focus {
+      outline: none;
+      border-color: var(--blue);
+      box-shadow: 0 0 0 3px rgba(0, 50, 255, 0.15);
+    }
+
+    select {
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%230032ff' stroke-width='1.6' fill='none'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      padding-right: 36px;
+    }
+
+    button {
+      font-family: var(--mono);
+      font-weight: 700;
+      font-size: 0.95rem;
+      letter-spacing: 0.02em;
+      color: #fff;
+      background: var(--blue);
+      border: none;
+      border-radius: 8px;
+      padding: 14px 22px;
+      cursor: pointer;
+      justify-self: start;
+      transition: opacity 0.15s ease, transform 0.15s ease;
+    }
+
+    button:hover:not(:disabled) { transform: translateY(-1px); }
+    button:disabled { opacity: 0.55; cursor: default; }
+
+    .form-status {
+      margin: 0;
+      font-size: 0.9rem;
+      display: none;
+    }
+    .form-status.show { display: block; }
+    .form-status.ok { color: #0a7d33; }
+    .form-status.err { color: #c02121; }
+  </style>
+</head>
+<body>
+  <main class="paper">
+    <header class="legal-head">
+      <a class="wordmark" href="/">1’rie<sup>®</sup></a>
+      <p class="eyebrow">Support</p>
+    </header>
+
+    <h1>Contact support</h1>
+    <p class="effective">We usually reply within a couple of business days.</p>
+
+    <p>
+      Found a bug, want to request a feature, or just need a hand? Send us a message below
+      and we’ll get back to you by email. You can also reach us directly at
+      <a href="mailto:bonjour@1rie.ink">bonjour@1rie.ink</a>.
+    </p>
+
+    <form class="support-form" id="supportForm" novalidate>
+      <div class="field">
+        <label for="app">App <span class="req">*</span></label>
+        <input type="text" id="app" name="app" placeholder="e.g. Teech Golf" required />
+      </div>
+
+      <div class="field">
+        <label for="email">Your email <span class="req">*</span></label>
+        <input type="email" id="email" name="email" placeholder="you@example.com" required
+               autocomplete="email" />
+      </div>
+
+      <div class="field">
+        <label for="type">Type <span class="req">*</span></label>
+        <select id="type" name="type" required>
+          <option value="bug">Bug</option>
+          <option value="feature">Feature request</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="content">Message <span class="req">*</span></label>
+        <textarea id="content" name="content" placeholder="Tell us what’s going on…" required></textarea>
+      </div>
+
+      <button type="submit" id="submitBtn">Send message</button>
+      <p class="form-status" id="status" role="status" aria-live="polite"></p>
+    </form>
+
+    <p class="note">
+      The information you submit is sent to Teech Golf SAS solely to handle your support request.
+      See our <a href="/app/privacy/">Privacy Policy</a> for details.
+    </p>
+    <a class="back" href="/">← Back to 1rie.ink</a>
+  </main>
+
+  <script>
+    const WEBHOOK_URL = "https://api.teech-golf.com/v0/31aed268-eb8b-48b0-b9b4-6b9c43ecdb41";
+    const form = document.getElementById("supportForm");
+    const btn = document.getElementById("submitBtn");
+    const statusEl = document.getElementById("status");
+
+    function setStatus(msg, kind) {
+      statusEl.textContent = msg;
+      statusEl.className = "form-status show " + kind;
+    }
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const app = document.getElementById("app").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const type = document.getElementById("type").value;
+      const message = document.getElementById("content").value.trim();
+
+      if (!app || !email || !message) {
+        setStatus("Please fill in every field.", "err");
+        return;
+      }
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        setStatus("Please enter a valid email address.", "err");
+        return;
+      }
+
+      // Prepend the reply-to email to the message body so it always reaches us,
+      // and mirror the iOS payload shape: { app, content, type, userInfo }.
+      const content = "Reply-to: " + email + "\n\n" + message;
+      const userInfo = [
+        "source: web support form",
+        "email: " + email,
+        "page: " + location.href,
+        "userAgent: " + navigator.userAgent,
+        "language: " + navigator.language,
+      ].join(" · ");
+
+      btn.disabled = true;
+      const originalLabel = btn.textContent;
+      btn.textContent = "Sending…";
+      setStatus("", "");
+      statusEl.className = "form-status";
+
+      try {
+        const res = await fetch(WEBHOOK_URL, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ app, content, type, userInfo }),
+        });
+
+        if (!res.ok) throw new Error("HTTP " + res.status);
+
+        form.reset();
+        setStatus("Thanks — your message is on its way. We’ll reply to " + email + ".", "ok");
+      } catch (err) {
+        setStatus(
+          "Something went wrong sending your message. Please email us directly at bonjour@1rie.ink.",
+          "err"
+        );
+      } finally {
+        btn.disabled = false;
+        btn.textContent = originalLabel;
+      }
+    });
+  </script>
+</body>
+</html>
