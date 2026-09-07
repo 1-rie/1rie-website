@@ -26,7 +26,7 @@ python3 -m http.server 8080
 
 ## Content notes
 
-- **Apps** — the Work section shows the real portfolio: PGT, SundayCup, Unsweet, Low Dopamine Path, Kithe, LutAI. Real app icons live in `assets/` (downscaled from each app's AppIcon set). Edit the `.panel` blocks in `index.html` to adjust copy or add App Store links.
+- **Apps** — the letter lists every app built under github.com/1-rie (31 as of September 2026): Teech Golf, PGT, SundayCup, Unsweet, Low Dopamine Path, Kithe, LutAI, Redpen, Sapira, Wolffy, CUE, keepr, Kata, MemoGo, Brainbank, Lunova, Overdraft, Phoenix, RedFlag, VTaper, Kalvas, FitCheck Club, SkillChef, CycleFuel, MuscleFuel, TrailFuel, Runproof, wigl, Pro Padel Training, 365 Strokes, YumAI. Real app icons live in `assets/` (256px, downscaled from each repo's AppIcon set). Edit the `.t.app` lines in `index.html` to adjust copy or add App Store links.
 - **Sound** — the `sound: off` toggle in the nav enables WebAudio effects (hover clicks + dot-matrix print zips). Synthesized at runtime, no audio files.
 
 ## Placeholders to replace (search "PLACEHOLDER" in index.html)
