@@ -26,7 +26,11 @@ python3 -m http.server 8080
 
 ## Content notes
 
-- **Apps** — the letter lists every app built under github.com/1-rie (31 as of September 2026): Teech Golf, PGT, SundayCup, Unsweet, Low Dopamine Path, Kithe, LutAI, Redpen, Sapira, Wolffy, CUE, keepr, Kata, MemoGo, Brainbank, Lunova, Overdraft, Phoenix, RedFlag, VTaper, Kalvas, FitCheck Club, SkillChef, CycleFuel, MuscleFuel, TrailFuel, Runproof, wigl, Pro Padel Training, 365 Strokes, YumAI. Real app icons live in `assets/` (256px, downscaled from each repo's AppIcon set). Edit the `.t.app` lines in `index.html` to adjust copy or add App Store links.
+- **Apps** — the letter lists every app under github.com/1-rie (51 as of September 2026), in two sections:
+  - *what's coming off the press* — the 31 built apps: Teech Golf, PGT, SundayCup, Unsweet, Low Dopamine Path, Kithe, LutAI, Redpen, Sapira, Wolffy, CUE, keepr, Kata, MemoGo, Brainbank, Lunova, Overdraft, Phoenix, RedFlag, VTaper, Kalvas, FitCheck Club, SkillChef, CycleFuel, MuscleFuel, TrailFuel, Runproof, wigl, Pro Padel Training, 365 Strokes, YumAI. Real app icons live in `assets/` (256px, downscaled from each repo's AppIcon set).
+  - *still in the tray* — the 20 concept-stage apps (iStack `/ideation` foundations, no shipped code or icon yet): Tempo, Vow, MamaMonday, Goalful, Cusp, Hale Age, Money Diary, Moonlit, PrepX, MindRank, PuttIQ, Performind, MobilityAge, SocialIQ, Pushback, Amplo, Nightink, Warpaint, Unlock, RoomSwitch. When one ships, move its line up into the first section and add its icon stamp.
+  - Not listed on purpose: `kiosk` (internal studio console), `istack*` (tooling), `feelEQ` / `first-app` / `*-certificates` / `daniel-workspace` (empty or non-product repos).
+  - Edit the `.t.app` lines in `index.html` to adjust copy or add App Store links.
 - **Sound** — the `sound: off` toggle in the nav enables WebAudio effects (hover clicks + dot-matrix print zips). Synthesized at runtime, no audio files.
 
 ## Placeholders to replace (search "PLACEHOLDER" in index.html)
